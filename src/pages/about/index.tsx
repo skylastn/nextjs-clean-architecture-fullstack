@@ -1,10 +1,5 @@
-const AboutPage = () => {
-    return (
-        <div>
-            <h1>About</h1>
-            <p>This is the about page.</p>
-        </div>
-    );
-};
+import FeAboutUI from "@/feature/front_office/presentation/fe/about/fe_about_ui";
 
-export default AboutPage;
+export default function AboutPage() {
+  return <FeAboutUI />;
+}

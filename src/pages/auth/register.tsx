@@ -1,9 +1,9 @@
-import RegisterUI from "@/presentation/auth/register/register_ui";
+import FeRegisterUI from "@/feature/auth/presentation/fe/register/fe_register_ui";
 
 const RegisterPage = () => {
   return (
     <>
-      <RegisterUI />
+      <FeRegisterUI />
     </>
   );
 };

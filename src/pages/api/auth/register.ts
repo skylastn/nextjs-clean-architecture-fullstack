@@ -1,19 +1,13 @@
-import { ApiResponse } from "@/domain/model/database/api_response";
-import { AuthService } from "@/infrastructure/services/be/auth_service";
 import { NextApiRequest, NextApiResponse } from "next";
+import { AuthController } from "@/feature/auth/presentation/be/be_auth_controller";
+
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   switch (req.method) {
     case "POST":
-      const { name, phone, email, password } = req.body;
-      try {
-        var result = await AuthService.register(name, phone, email, password);
-        return ApiResponse.success(res, result);
-      } catch (err) {
-        return ApiResponse.failed(res, null, ApiResponse.catchError(err));
-      }
+      return AuthController.register(req, res);
     default:
       res.setHeader("Allow", ["POST"]);
       res.status(405).end(`Method ${req.method} Not Allowed`);

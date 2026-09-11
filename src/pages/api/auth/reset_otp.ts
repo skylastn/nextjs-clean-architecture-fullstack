@@ -1,21 +1,13 @@
-import { ApiResponse } from "@/domain/model/database/api_response";
-import { ResendOTPType } from "@/domain/model/enum/resend_otp_type";
-import { AuthService } from "@/infrastructure/services/be/auth_service";
 import { NextApiRequest, NextApiResponse } from "next";
+import { AuthController } from "@/feature/auth/presentation/be/be_auth_controller";
+
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   switch (req.method) {
     case "POST":
-      const { type, username } = req.body;
-
-      try {
-        await AuthService.resendOtp(ResendOTPType.from(type), username);
-        return ApiResponse.success(res, [], "Success Sending Otp");
-      } catch (err) {
-        return ApiResponse.failed(res, null, ApiResponse.catchError(err));
-      }
+      return AuthController.resendOtp(req, res);
     default:
       res.setHeader("Allow", ["POST"]);
       res.status(405).end(`Method ${req.method} Not Allowed`);

@@ -1,8 +1,9 @@
-import LoginUI from "@/presentation/auth/login/login_ui";
+import FeLoginUI from "@/feature/auth/presentation/fe/login/fe_login_ui";
+
 const LoginPage = () => {
   return (
     <>
-      <LoginUI />
+      <FeLoginUI />
     </>
   );
 };

@@ -1,8 +1,9 @@
-import WelcomeUI from "@/presentation/welcome/welcome_ui";
+import FeWelcomeUI from "@/feature/front_office/presentation/fe/welcome/fe_welcome_ui";
+
 const WelcomePage = () => {
   return (
     <>
-      <WelcomeUI />
+      <FeWelcomeUI />
     </>
   );
 };
