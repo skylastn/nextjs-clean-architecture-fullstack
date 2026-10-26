@@ -1,18 +1,20 @@
-FROM node:24-alpine
+FROM oven/bun:1.4.2-alpine
 
 # Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
-# COPY package*.json ./
+# Copy Bun manifest and lockfile
+COPY package.json bun.lock ./
+RUN bun install --frozen-lockfile
 
 # Copy the rest of the application
 COPY . .
 
-# RUN npm run build
+# Build when deploying
+# RUN bun run build
 
 # Expose port 3000 (default Next.js port)
 EXPOSE 3000
 
 # Run the application
-# CMD ["npm", "run", "start"]
+# CMD ["bun", "run", "start"]
